@@ -1,0 +1,55 @@
+﻿@model RealTimeChatWebApp.Models.HelpDeskUserModel
+
+@{
+    ViewBag.Title = "Centro de Servicio al Cliente del BCCR - Ingreso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Servicio al Cliente - Inicio de Sesión</h2>*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div id="loginContainer" style="border: 2px solid gray; border-radius: 15px; padding: 35px 35px 35px 35px; width: 85%; margin: 0 auto; margin-top: 35px;">
+        @*<fieldset class="panel panel-body">
+            <legend class="panel panel-heading">Información de usuario</legend>*@
+            <div class="display-label display-label-extension">
+                @Html.LabelFor(model => model._LoginName, new { @class = "label-form" })
+            </div>
+            <div class="display-field display-field-extension" style="padding-bottom: 25px;">
+                @Html.TextBoxFor(model => model._LoginName, new { @class = "textbox-input", @style = "width: 100%; max-width: 100%; height: 35px;" })
+                @Html.ValidationMessageFor(model => model._LoginName)
+            </div>
+            <div class="display-label display-label-extension">
+                @Html.LabelFor(model => model._Password, new { @class = "label-form" })
+            </div>
+            <div class="display-field display-field-extension" style="padding-bottom: 25px;">
+                @Html.PasswordFor(model => model._Password, new { @class = "textbox-input", @style = "width: 100%; max-width: 100%; height: 35px;" })
+                @Html.ValidationMessageFor(model => model._Password)
+            </div>
+            <div class="display-label display-label-extension">
+                @Html.LabelFor(model => model._UserEmail, new { @class = "label-form" })
+            </div>
+            <div class="display-field display-field-extension" style="padding-bottom: 25px;">
+                @Html.TextBoxFor(model => model._UserEmail, new { @class = "textbox-input", @style = "width: 100%; max-width: 100%; height: 35px;" })
+                @Html.ValidationMessageFor(model => model._UserEmail, String.Empty, new { @style = "color: red; font-weight: bold; font-style: italic;" })
+            </div>
+            <div class="display-label display-label-extension">
+                @Html.LabelFor(model => model._FullName, new { @class = "label-form" })
+            </div>
+            <div class="display-field display-field-extension" style="padding-bottom: 25px;">
+                @Html.TextBoxFor(model => model._FullName, new { @class = "textbox-input", @style = "width: 100%; max-width: 100%; height: 35px;" })
+                @Html.ValidationMessageFor(model => model._FullName)
+            </div>
+            <div style="text-align: right;">
+                <input type="submit" class="btn btn-primary" value="Iniciar Servicio" />
+            </div>
+        @*</fieldset>*@
+    </div>
+
+    @Html.HiddenFor(m => m._GroupNameChat, new { @id = "GroupNameChat" })
+
+}
+
